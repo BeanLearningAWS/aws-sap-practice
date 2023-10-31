@@ -1,13 +1,13 @@
 "use strict";
 
 function handler(event) {
-    const response = event.response;
-    const request = event.request;
-    const userAgent = request.headers['user-agent'][0].value;
+    var response = event.response;
+    var request = event.request;
+    var userAgent = request.headers['user-agent'].value;
 
     if (!userAgent.includes('Chrome')) {
         response.headers = {};
-        response.headers['x-custom-response'] = [{ key: 'X-Custom-Response', value: 'Non-Chrome Device' }];
+        response.headers['x-custom-response'] = { value: 'non-chrome' };
 
     }
     return response;
